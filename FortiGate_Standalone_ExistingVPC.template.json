@@ -1,6 +1,6 @@
 {
 	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "(v4.2) AWS CFT to deploy a standalone FortiGate into an existing VPC",
+	"Description": "(v4.3) AWS CFT to deploy a standalone FortiGate into an existing VPC",
 	"Metadata": {
 		"AWS::CloudFormation::Interface": {
 			"ParameterGroups": [
@@ -33,7 +33,7 @@
 				},
 				{
 					"Label": {
-						"default": "FortiGaate Interface IP Configuration"
+						"default": "FortiGate Interface IP Configuration"
 					},
 					"Parameters": [
 						"FortiGatePublicIP",
@@ -309,7 +309,7 @@
 									{
 										"Ref": "AWS::StackName"
 									},
-									"-FortiGate1"
+									"-FortiGate"
 								]
 							]
 						}
@@ -785,7 +785,7 @@
 			"Value": {
 				"Ref": "Fgt"
 			},
-			"Description": "Initial password for the FortiGates"
+			"Description": "Initial password for the FortiGate"
 		},
 		"FortiGateLoginURL": {
 			"Value": {
@@ -799,7 +799,7 @@
 					]
 				]
 			},
-			"Description": "Login URL for the HAmgmt interface of FortiGate1"
+			"Description": "Login URL for the Public interface of the FortiGate"
 		}
 	}
 }
