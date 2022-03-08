@@ -1,6 +1,6 @@
 {
 	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "(v4.7) AWS CFT to deploy a standalone FortiGate into an existing VPC",
+	"Description": "(v4.8) AWS CFT to deploy a standalone FortiGate into an existing VPC",
 	"Metadata": {
 		"AWS::CloudFormation::Interface": {
 			"ParameterGroups": [
@@ -88,11 +88,19 @@
 				"c5.4xlarge",
 				"c5.9xlarge",
 				"c5.18xlarge",
+				"c5n.large",
 				"c5n.xlarge",
 				"c5n.2xlarge",
 				"c5n.4xlarge",
 				"c5n.9xlarge",
-				"c5n.18xlarge"
+				"c5n.18xlarge",
+				"c6i.large",
+				"c6i.xlarge",
+				"c6i.2xlarge",
+				"c6i.4xlarge",
+				"c6i.8xlarge",
+				"c6i.16xlarge",
+				"c6i.24xlarge"
 			]
 		},
 		"CIDRForInstanceAccess": {
