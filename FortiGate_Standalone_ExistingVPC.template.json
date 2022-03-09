@@ -1,6 +1,6 @@
 {
 	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "(v4.8) AWS CFT to deploy a standalone FortiGate into an existing VPC",
+	"Description": "(v5.0) AWS CFT to deploy a standalone FortiGate into an existing VPC",
 	"Metadata": {
 		"AWS::CloudFormation::Interface": {
 			"ParameterGroups": [
@@ -206,6 +206,7 @@
 									"Effect": "Allow",
 									"Action": [
 										"ec2:DescribeInstances",
+										"ec2:DescribeRegions",
 										"eks:DescribeCluster",
 										"eks:ListClusters",
 										"inspector:DescribeFindings",
@@ -612,7 +613,7 @@
 				},
 				"Timeout": 120,
 				"Handler": "index.handler",
-				"Runtime": "python3.8",
+				"Runtime": "python3.9",
 				"MemorySize": 128
 			}
 		},
@@ -721,8 +722,9 @@
 								"        resp = s3.put_object(Body=fgt1_conf, Bucket=event['ResourceProperties']['S3Bucket'], Key='fgt1.txt')",
 								"    except Exception as error:",
 								"        logger.error('<--!! Exception: {}'.format(error))",
-								"        responseData = {'msg':'error'}",
+								"        responseData = {'msg':'Exception: {}'.format(error)}",
 								"        cfnresponse.send(event, context, cfnresponse.FAILED, responseData)",
+								"        return None",
 								"    if resp['ResponseMetadata']['HTTPStatusCode'] == 200:",
 								"        fgt1_result = True",
 								"        logger.info('<-- s3 put_object fgt1.txt successful')",
@@ -746,7 +748,7 @@
 				},
 				"Timeout": 120,
 				"Handler": "index.handler",
-				"Runtime": "python3.8",
+				"Runtime": "python3.9",
 				"MemorySize": 128
 			}
 		},
